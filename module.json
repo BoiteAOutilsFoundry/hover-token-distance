@@ -1,0 +1,22 @@
+{
+  "id": "hover-token-distance",
+  "title": "Hover Token Distance",
+  "description": "Affiche la distance entre votre token sélectionné et le token survolé.",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "Module local"
+    }
+  ],
+  "compatibility": {
+    "minimum": "12",
+    "verified": "12",
+    "maximum": "12"
+  },
+  "esmodules": [
+    "scripts/hover-token-distance.mjs"
+  ],
+  "styles": [
+    "styles/hover-token-distance.css"
+  ]
+}
