@@ -1,5 +1,17 @@
-HOVER TOKEN DISTANCE — VERSION 0.1.0
-Compatible exclusivement avec Foundry VTT 12.x
+HOVER TOKEN DISTANCE — VERSION 1.1.0
+Compatible avec Foundry VTT 12.x
+
+FONCTIONS
+- Affiche la distance entre le token sélectionné et un token survolé.
+- Affiche la distance du trajet pendant le glisser-déposer d'un token.
+- Colore le trajet :
+  - vert jusqu'à la vitesse normale ;
+  - jaune jusqu'au double de cette vitesse, correspondant à Sprinter ;
+  - rouge au-delà.
+- La touche Y fixe une étape et permet de mesurer un trajet avec plusieurs virages.
+- La touche U annule le trajet et remet l'aperçu au point de départ.
+- Les raccourcis sont modifiables dans « Configuration des contrôles » de Foundry.
+- Le passage sur un autre token situé à la même élévation coûte le double de distance.
 
 INSTALLATION
 1. Fermez Foundry VTT.
@@ -8,24 +20,26 @@ INSTALLATION
 3. Vérifiez que le chemin final est :
    Data/modules/hover-token-distance/module.json
 4. Redémarrez Foundry.
-5. Chargez votre monde, ouvrez « Gérer les modules » et activez
-   « Hover Token Distance ».
+5. Activez « Hover Token Distance » dans « Gérer les modules ».
 
-UTILISATION
-1. Sélectionnez votre token par un clic gauche.
-2. Survolez un autre token.
-3. La distance apparaît au-dessus du token survolé.
+RACCOURCIS PAR DÉFAUT
+- Y : fixer une étape.
+- U : annuler le déplacement en cours.
 
-Le module utilise la règle de distance configurée par la scène.
-Si aucun token n'est sélectionné, il tente d'utiliser l'unique token actif
-associé au personnage assigné à votre utilisateur.
+Les raccourcis se modifient dans :
+Paramètres du jeu > Configuration des contrôles > Hover Token Distance.
 
-LIMITES DE CETTE PREMIÈRE VERSION
-- Mesure en deux dimensions : l'élévation n'est pas intégrée.
-- Si plusieurs tokens sont sélectionnés, aucun résultat n'est affiché.
-- Ce module n'a pas encore été exécuté dans votre installation précise ;
-  il s'agit de la première version de test.
+DÉPLACEMENT
+La vitesse est lue dans les données de mouvement de l'acteur D&D 5e. Lorsque plusieurs vitesses existent, le module emploie la plus élevée. Un token sans vitesse exploitable conserve l'affichage de distance, mais le trajet reste vert faute de seuil connu.
+
+LIMITES
+- Mesure en deux dimensions ; l'élévation sert uniquement à déterminer si deux tokens occupent le même niveau.
+- Le terrain difficile est calculé sur la portion du trajet recouverte par un autre token visible.
+- Le module mesure le trajet et ses étapes, mais Foundry dépose toujours le token uniquement à sa destination finale.
 
 DIAGNOSTIC
-En cas de problème, ouvrez les outils développeur avec F12, onglet Console,
-et cherchez une ligne commençant par : hover-token-distance
+En cas de problème, ouvrez les outils développeur avec F12, onglet Console, et cherchez une ligne commençant par : hover-token-distance
+
+## Suivi du déplacement en combat
+
+Pendant un combat, le module mémorise temporairement la distance déjà parcourue par chaque combattant. Les couleurs du trajet tiennent compte du déplacement restant lors des déplacements suivants. Le compteur de l'entité est remis à zéro au début de son prochain tour.

@@ -1,30 +1,36 @@
 {
   "id": "hover-token-distance",
   "title": "Hover Token Distance",
-  "description": "Affiche la distance entre votre token sélectionné et le token survolé.",
-  "version": "1.0.0",
-
+  "description": "Affiche les distances au survol et pendant le déplacement, avec étapes, seuils de mouvement et terrain difficile sur les tokens.",
+  "version": "1.1.0",
   "authors": [
     {
       "name": "hope7567"
     }
   ],
-
   "compatibility": {
     "minimum": "12",
     "verified": "12",
     "maximum": "12"
   },
-
   "esmodules": [
     "scripts/hover-token-distance.mjs"
   ],
-
   "styles": [
     "styles/hover-token-distance.css"
   ],
-
   "manifest": "https://github.com/hope7567/hover-token-distance/releases/latest/download/module.json",
-  "download": "https://github.com/hope7567/hover-token-distance/releases/download/v1.0.0/hover-token-distance.zip",
-  "url": "https://github.com/hope7567/hover-token-distance"
+  "download": "https://github.com/hope7567/hover-token-distance/releases/download/v1.1.0/hover-token-distance.zip",
+  "url": "https://github.com/hope7567/hover-token-distance",
+  "relationships": {
+    "recommends": [
+      {
+        "id": "lib-wrapper",
+        "type": "module",
+        "compatibility": {
+          "minimum": "1.13.0"
+        }
+      }
+    ]
+  }
 }
