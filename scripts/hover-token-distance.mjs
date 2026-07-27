@@ -146,22 +146,27 @@ function installInteractionTracking() {
       const state = snapshotDragStateForDrop(this.interactionData);
       const hasRoute = Boolean(state && !state.cancelled && state.waypoints.length);
 
-      // Le dépôt natif de Foundry reste intact. En particulier, on ne renvoie
-      // jamais son clone visuel au point de départ : cela créait le token
-      // fantôme persistant. Le token réel sera replacé silencieusement à son
-      // origine juste avant de rejouer un trajet avec points d'ancrage.
+      // Lorsqu'un trajet contient des points d'ancrage, Foundry ne doit pas
+      // appliquer son déplacement natif en ligne droite. On laisse néanmoins
+      // son gestionnaire terminer normalement le glisser-déposer afin qu'il
+      // détruise son aperçu visuel, puis le module joue lui-même chaque segment.
+      const nativeDropBlocker = hasRoute ? blockNextNativeTokenMove(state.token) : null;
 
       let result;
       try {
         result = original.call(this, action, event, ...args);
       } catch (error) {
+        nativeDropBlocker?.cancel();
         cleanupDragMeasurement();
         throw error;
       }
 
       const finishDrop = async () => {
-        // Foundry termine et détruit lui-même son aperçu de glisser-déposer.
-        // Le module ne crée, ne déplace et ne conserve aucun clone de token.
+        // Attend que la tentative de mise à jour native ait été interceptée.
+        // Cela évite que la mise à jour réseau de Foundry arrive après le début
+        // du trajet et écrase l'un de ses points d'ancrage.
+        if (nativeDropBlocker) await nativeDropBlocker.wait();
+
         cleanupDragMeasurement();
         if (!state) return;
 
@@ -179,6 +184,7 @@ function installInteractionTracking() {
           await finishDrop();
           return value;
         }, async error => {
+          nativeDropBlocker?.cancel();
           cleanupDragMeasurement();
           throw error;
         });
@@ -257,6 +263,48 @@ function updateDragMeasurement(token, event, managerData = null) {
   }
 
   renderDragMeasurement();
+}
+
+function blockNextNativeTokenMove(token) {
+  let hookId = null;
+  let timeoutId = null;
+  let settled = false;
+  let resolveWait;
+
+  const promise = new Promise(resolve => {
+    resolveWait = resolve;
+  });
+
+  const finish = () => {
+    if (settled) return;
+    settled = true;
+    if (hookId !== null) Hooks.off("preUpdateToken", hookId);
+    if (timeoutId !== null) clearTimeout(timeoutId);
+    resolveWait();
+  };
+
+  hookId = Hooks.on("preUpdateToken", (document, change, _options, userId) => {
+    if (document !== token?.document && document?.id !== token?.document?.id) return;
+    if (userId && game.user?.id && userId !== game.user.id) return;
+
+    const changesPosition = Object.hasOwn(change ?? {}, "x") || Object.hasOwn(change ?? {}, "y");
+    if (!changesPosition) return;
+
+    // Le hook est retiré avant que le trajet manuel ne commence. Seule la
+    // mise à jour de position générée par le dépôt natif est donc annulée.
+    finish();
+    return false;
+  });
+
+  // Repli défensif : certaines configurations de Foundry peuvent terminer le
+  // dépôt sans produire de mise à jour de document (destination inchangée,
+  // module tiers, etc.). On ne bloque alors jamais le trajet manuel.
+  timeoutId = setTimeout(finish, 350);
+
+  return {
+    wait: () => promise,
+    cancel: finish
+  };
 }
 
 function snapshotDragStateForDrop(managerData = null) {

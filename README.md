@@ -1,4 +1,4 @@
-HOVER TOKEN DISTANCE — VERSION 1.1.0
+HOVER TOKEN DISTANCE — VERSION 1.1.1
 Compatible avec Foundry VTT 12.x
 
 FONCTIONS
@@ -35,7 +35,7 @@ La vitesse est lue dans les données de mouvement de l'acteur D&D 5e. Lorsque pl
 LIMITES
 - Mesure en deux dimensions ; l'élévation sert uniquement à déterminer si deux tokens occupent le même niveau.
 - Le terrain difficile est calculé sur la portion du trajet recouverte par un autre token visible.
-- Le module mesure le trajet et ses étapes, mais Foundry dépose toujours le token uniquement à sa destination finale.
+- Avec des points d’ancrage, le module bloque le déplacement natif en ligne droite et déplace le token successivement par chaque étape jusqu’à la destination finale.
 
 DIAGNOSTIC
 En cas de problème, ouvrez les outils développeur avec F12, onglet Console, et cherchez une ligne commençant par : hover-token-distance
