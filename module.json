@@ -2,7 +2,7 @@
   "id": "hover-token-distance",
   "title": "Hover Token Distance",
   "description": "Affiche les distances au survol et pendant le déplacement, avec étapes, seuils de mouvement et terrain difficile sur les tokens.",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "authors": [
     {
       "name": "Hope"
@@ -10,7 +10,7 @@
   ],
   "compatibility": {
     "minimum": "12",
-    "verified": "12",
+    "verified": "12.343",
     "maximum": "12"
   },
   "esmodules": [
@@ -32,5 +32,5 @@
   },
   "url": "https://github.com/BoiteAOutilsFoundry/hover-token-distance",
   "manifest": "https://github.com/BoiteAOutilsFoundry/hover-token-distance/releases/latest/download/module.json",
-  "download": "https://github.com/BoiteAOutilsFoundry/hover-token-distance/releases/download/v1.1.1/hover-token-distance.zip"
+  "download": "https://github.com/BoiteAOutilsFoundry/hover-token-distance/releases/download/v1.1.2/hover-token-distance.zip"
 }

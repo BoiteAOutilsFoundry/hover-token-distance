@@ -1,4 +1,4 @@
-HOVER TOKEN DISTANCE — VERSION 1.1.1
+HOVER TOKEN DISTANCE — VERSION 1.1.2
 Compatible avec Foundry VTT 12.x
 
 FONCTIONS
@@ -12,15 +12,6 @@ FONCTIONS
 - La touche U annule le trajet et remet l'aperçu au point de départ.
 - Les raccourcis sont modifiables dans « Configuration des contrôles » de Foundry.
 - Le passage sur un autre token situé à la même élévation coûte le double de distance.
-
-INSTALLATION
-1. Fermez Foundry VTT.
-2. Copiez le dossier « hover-token-distance » dans :
-   <dossier de données Foundry>/Data/modules/
-3. Vérifiez que le chemin final est :
-   Data/modules/hover-token-distance/module.json
-4. Redémarrez Foundry.
-5. Activez « Hover Token Distance » dans « Gérer les modules ».
 
 RACCOURCIS PAR DÉFAUT
 - Y : fixer une étape.
@@ -43,3 +34,7 @@ En cas de problème, ouvrez les outils développeur avec F12, onglet Console, et
 ## Suivi du déplacement en combat
 
 Pendant un combat, le module mémorise temporairement la distance déjà parcourue par chaque combattant. Les couleurs du trajet tiennent compte du déplacement restant lors des déplacements suivants. Le compteur de l'entité est remis à zéro au début de son prochain tour.
+
+
+## Changelog
+See CHANGELOG.md for version history.
