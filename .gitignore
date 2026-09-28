@@ -1,3 +1,31 @@
+# Dépendances, caches et rapports générés par les outils de développement.
 node_modules/
 coverage/
+.nyc_output/
+.cache/
+
+# Configuration locale des IDE et éditeurs.
 .idea/
+.vscode/
+*.iml
+
+# Archives de distribution et dossiers de sortie à la racine du projet.
+/dist/
+/build/
+/*.zip
+
+# Journaux et fichiers temporaires des outils et éditeurs.
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# Métadonnées locales de Windows et macOS.
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Les sources, tests/, tools/, docs/, package.json et les éventuels fichiers
+# de verrouillage des dépendances doivent rester versionnés.
