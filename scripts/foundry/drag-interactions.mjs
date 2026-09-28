@@ -1,7 +1,7 @@
 /**
- * Raccordement du glisser-déposer à MouseInteractionManager de Foundry V12.
+ * Raccordement du glisser-déposer à MouseInteractionManager de Foundry V14.
  * Toute adaptation à une autre version de cette API commence dans ce fichier.
- * @see https://foundryvtt.com/api/v12/classes/client.MouseInteractionManager.html
+ * @see https://foundryvtt.com/api/classes/foundry.canvas.interaction.MouseInteractionManager.html
  */
 import { MODULE_ID } from "../shared/constants.mjs";
 import { translate } from "../i18n/localization.mjs";

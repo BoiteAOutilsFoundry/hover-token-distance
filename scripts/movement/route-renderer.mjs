@@ -135,7 +135,7 @@ export function ensureOverlay() {
   overlay.eventMode = "none";
   overlay.zIndex = 100000;
 
-  // Le stage est stable sur Foundry V12 et utilise les mêmes coordonnées monde
+  // Le stage est stable sur Foundry V14 et utilise les mêmes coordonnées monde
   // que les tokens. Cela évite les conflits avec les groupes canvas ajoutés par
   // des modules comme Roofs.
   canvas.stage.sortableChildren = true;

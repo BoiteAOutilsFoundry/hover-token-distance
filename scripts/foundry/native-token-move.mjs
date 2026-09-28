@@ -2,7 +2,7 @@
  * Interception temporaire du déplacement natif lors d'un trajet avec étapes.
  * preUpdateToken est la variante Token du hook preUpdateDocument : retourner
  * false de manière synchrone annule la mise à jour sur le client initiateur.
- * @see https://foundryvtt.com/api/v12/functions/hookEvents.preUpdateDocument.html
+ * @see https://foundryvtt.com/api/functions/hookEvents.preUpdateDocument.html
  */
 
 /**
