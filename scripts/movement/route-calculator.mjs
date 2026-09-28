@@ -63,9 +63,9 @@ export function buildCostSamples(points, movingToken) {
 }
 
 /**
- * Délègue la mesure aux règles de la grille Foundry V12.
+ * Délègue la mesure aux règles de la grille Foundry V14.
  * Le calcul en pixels ne sert que si cette API échoue ou renvoie une valeur invalide.
- * @see https://foundryvtt.com/api/v12/classes/foundry.grid.BaseGrid.html#measurePath
+ * @see https://foundryvtt.com/api/classes/foundry.grid.BaseGrid.html#measurePath
  */
 export function measureDistance(a, b) {
   try {

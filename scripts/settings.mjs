@@ -49,7 +49,7 @@ function registerLanguageSetting() {
 
   // La préférence sauvegardée n'est lisible qu'après register(). Actualiser
   // le réglage enregistré évite de garder son propre libellé en anglais après
-  // un redémarrage avec le français sélectionné. settings est le registre public V12.
+  // un redémarrage avec le français sélectionné. settings est le registre public de Foundry.
   const setting = game.settings.settings.get(`${MODULE_ID}.${SETTING_LANGUAGE}`);
   setting.name = translate("settings.language.name");
   setting.hint = translate("settings.language.hint");
