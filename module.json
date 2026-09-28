@@ -2,7 +2,7 @@
   "id": "hover-token-distance",
   "title": "Hover Token Distance",
   "description": "Displays distances when hovering over or moving tokens, with waypoints, movement thresholds and difficult terrain created by other tokens.",
-  "version": "1.1.3",
+  "version": "12.0.0",
   "authors": [
     {
       "name": "Hope"
@@ -32,5 +32,5 @@
   },
   "url": "https://github.com/BoiteAOutilsFoundry/hover-token-distance",
   "manifest": "https://github.com/BoiteAOutilsFoundry/hover-token-distance/releases/latest/download/module.json",
-  "download": "https://github.com/BoiteAOutilsFoundry/hover-token-distance/releases/download/v1.1.3/hover-token-distance.zip"
+  "download": "https://github.com/BoiteAOutilsFoundry/hover-token-distance/releases/download/v12.0.0/hover-token-distance.zip"
 }
